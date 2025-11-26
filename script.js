@@ -3,20 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Mobile Menu Toggle
   // =======================================================
   const menuToggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
+  const navMenu = document.getElementById("nav-menu");
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && navMenu) {
     menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+      navMenu.classList.toggle("active");
     });
 
     // Close menu when a link is clicked
-    navLinks.querySelectorAll("a").forEach((link) => {
+    navMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        // Ensure the menu is collapsed after tapping a link (on mobile)
-        if (navLinks.classList.contains("active")) {
-          navLinks.classList.remove("active");
-        }
+        navMenu.classList.remove("active");
       });
     });
   }
@@ -24,92 +21,60 @@ document.addEventListener("DOMContentLoaded", () => {
   // =======================================================
   // 2. Pricing Toggle Logic (Monthly/Yearly)
   // =======================================================
-  const pricingSwitch = document.getElementById("pricing-switch");
-  const priceElements = document.querySelectorAll(".price");
+  const pricingToggle = document.getElementById("pricing-toggle");
+  const priceCards = document.querySelectorAll("#pricing article");
+  const monthlyLabel = document.getElementById("monthly-label");
+  const yearlyLabel = document.getElementById("yearly-label");
 
-  if (pricingSwitch && priceElements.length > 0) {
-    // Initial setup for price display
-    // The HTML should default to monthly prices, so we update the cycle text to match
-    document.querySelectorAll(".price-cycle").forEach((textEl) => {
-      textEl.textContent = "per user / month";
-    });
+  if (pricingToggle && priceCards.length > 0) {
+    pricingToggle.addEventListener("click", () => {
+      pricingToggle.classList.toggle("yearly");
+      const isYearly = pricingToggle.classList.contains("yearly");
 
-    pricingSwitch.addEventListener("change", (event) => {
-      const isYearly = event.target.checked;
+      // Update label colors
+      monthlyLabel.classList.toggle("text-gray-500");
+      yearlyLabel.classList.toggle("text-gray-500");
 
-      priceElements.forEach((priceEl) => {
-        // Get the appropriate price from the data attributes
-        // Data attributes use the full value (e.g., "$199")
-        const newPrice = isYearly
-          ? priceEl.getAttribute("data-yearly")
-          : priceEl.getAttribute("data-monthly");
+      priceCards.forEach((card) => {
+        const priceSpan = card.querySelector(".text-5xl");
+        const priceCycle = card.querySelector('[id^="price-cycle-"]');
+        const dataMonthly = priceSpan.getAttribute("data-monthly");
+        const dataYearly = priceSpan.getAttribute("data-yearly");
 
-        // Update the visible text, splitting the currency sign and value for consistent styling
-        const value = newPrice.replace("$", "");
+        const newPrice = isYearly ? dataYearly : dataMonthly;
+        const cycleText = isYearly ? "per year" : "per month";
 
-        priceEl.innerHTML = `<span class="price-currency">$</span>${value}`;
-      });
-
-      // Update the price cycle text below the price
-      const cycleText = document.querySelectorAll(".price-cycle");
-      cycleText.forEach((textEl) => {
-        textEl.textContent = isYearly
-          ? "per user / year (Billed Annually)"
-          : "per user / month";
+        // Update price and cycle text
+        priceSpan.innerHTML = `<span class="text-3xl align-top font-bold text-gray-500">$</span>${newPrice}`;
+        priceCycle.textContent = cycleText;
       });
     });
   }
 
   // =======================================================
-  // 3. Scroll Animation Observer (for CSS animations)
+  // 3. Scroll Animation Observer (Framer Motion equivalent)
   // =======================================================
-  // Select all elements that should animate on scroll
-  const animateElements = document.querySelectorAll(
-    ".fade-in-up, .slide-in-bottom, .scale-in, .slide-in-left, .slide-in-right"
+  const animateElements = document.querySelectorAll(".animate-on-scroll");
+
+  const scrollObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animated");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      // Trigger animation when element is 100px from the viewport bottom
+      rootMargin: "0px 0px -100px 0px",
+      threshold: 0.1,
+    }
   );
 
-  if (animateElements.length > 0) {
-    const scrollObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // When intersecting, add the 'animated' class to trigger the CSS keyframes
-            entry.target.classList.add("animated");
-            // Stop observing once the animation has been triggered
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        // Adjust the rootMargin to trigger the animation earlier, when the element is 100px from the bottom
-        rootMargin: "0px 0px -100px 0px",
-        threshold: 0.01, // Trigger with minimal visibility
-      }
-    );
-
-    // Set initial state and start observing elements
-    animateElements.forEach((element) => {
-      // 1. Initial Opacity: Must be 0 to hide it before animation starts
-      element.style.opacity = "0";
-
-      // 2. Initial Transform: Set the starting position for the animation to reserve space
-      if (
-        element.classList.contains("fade-in-up") ||
-        element.classList.contains("slide-in-bottom")
-      ) {
-        element.style.transform = "translateY(20px)";
-      } else if (element.classList.contains("scale-in")) {
-        element.style.transform = "scale(0.9)";
-      } else if (element.classList.contains("slide-in-left")) {
-        element.style.transform = "translateX(-30px)";
-      } else if (element.classList.contains("slide-in-right")) {
-        element.style.transform = "translateX(30px)";
-      }
-
-      // Start observing
-      scrollObserver.observe(element);
-    });
-  }
+  animateElements.forEach((element) => {
+    scrollObserver.observe(element);
+  });
 
   // =======================================================
   // 4. Newsletter Subscription Mockup
@@ -120,17 +85,14 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const input = this.querySelector('input[type="email"]');
 
-      // In a real application, this is where you'd send data to a server.
-      console.log("Subscribing email:", input.value);
-
-      // Mock success message (replace input with a message box)
+      // Mock success message
       const parent = this.parentElement;
       parent.innerHTML = `
-                <div class="text-green-600 bg-green-100 p-4 rounded-lg shadow-inner w-full">
-                    <p class="font-bold">Subscribed!</p>
-                    <p class="text-sm">Thank you for joining our newsletter with ${input.value}!</p>
-                </div>
-            `;
+                        <div class="text-center md:text-left p-6 bg-green-100 border border-green-300 rounded-xl w-full">
+                            <h3 class="text-xl font-bold text-green-800 mb-2">Success!</h3>
+                            <p class="text-green-700">You are now subscribed with ${input.value}. Check your inbox soon!</p>
+                        </div>
+                    `;
     });
   }
 });

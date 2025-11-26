@@ -3,400 +3,924 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuickSpace AI - Innovative Solution</title>
-    <!-- Link to Google Font (Inter) and Custom Stylesheet -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <title>Velora AI</title>
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dancing+Script:wght@400..700&family=Gilda+Display&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Manrope:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Dancing+Script:wght@400..700&family=Gilda+Display&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Manrope:wght@200..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
       rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Icon library for social media and feature icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
   </head>
-  <body>
-    <!-- 1. Navigation Header -->
-    <header class="main-header">
-      <div class="container navbar-content">
-        <a href="#" class="logo">
-          <i class="fas fa-ellipsis-h logo-dots"></i>
-          QuickSpace
-        </a>
-        <nav class="nav-links" id="nav-links">
-          <a href="#hero">Home</a>
-          <a href="#features">Features</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#contact">Contact</a>
+  <body class="bg-white">
+    <!-- HEADER/NAVBAR -->
+    <header class="sticky-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-18 py-5">
+          <!-- Logo -->
+          <a href="#" class="text-3xl font-extrabold flex items-center">
+            <span class="text-primary">•••</span
+            ><span class="text-gray-900">Velora AI</span>
+          </a>
+
+          <!-- Desktop Nav Links -->
+          <nav
+            class="hidden lg:flex space-x-8 font-medium text-gray-700 items-center"
+            id="desktop-nav"
+          >
+            <a href="#home" class="hover:text-primary transition">Home</a>
+            <a href="#features" class="hover:text-primary transition">Pages</a>
+            <a href="#pricing" class="hover:text-primary transition">Pricing</a>
+            <a href="#" class="hover:text-primary transition">Portfolio</a>
+            <a href="#" class="hover:text-primary transition">Blog</a>
+            <a href="#" class="hover:text-primary transition">Contact</a>
+            <a
+              href="#pricing"
+              class="bg-primary text-white px-5 py-2 rounded-lg font-semibold shadow-xl hover:bg-primary-dark transition ml-4"
+            >
+              Get Started
+            </a>
+          </nav>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="menu-toggle"
+            class="lg:hidden text-gray-600 focus:outline-none"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav id="nav-menu" class="nav-menu lg:hidden">
+          <a href="#home" class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Home</a
+          >
+          <a
+            href="#features"
+            class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Pages</a
+          >
+          <a
+            href="#pricing"
+            class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Pricing</a
+          >
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Portfolio</a
+          >
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Blog</a
+          >
+          <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-50"
+            >Contact</a
+          >
+          <div class="p-4">
+            <a
+              href="#pricing"
+              class="block bg-primary text-white w-full py-2 rounded-lg font-semibold text-center"
+            >
+              Get Started Free
+            </a>
+          </div>
         </nav>
-        <a href="#" class="btn-cta">Get Started Free</a>
-        <button class="menu-toggle" id="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
       </div>
     </header>
 
     <main>
-      <!-- 2. Hero Section -->
-      <section id="hero" class="hero-section">
-        <div class="container hero-grid">
-          <!-- Text Content -->
-          <div class="hero-text">
-            <h1>Smart-Thinking & Innovative Solution.</h1>
-            <p class="subtitle-text">
-              Class aptent taciti sociosqu ad litora torquent conubia nostra ma
-              inceptos himenaeos. Donec tristique nibh ipsum dignissim.
-            </p>
-            <div class="hero-actions">
-              <a href="#" class="btn-primary">Discover More</a>
-              <a href="#" class="explore-link"
-                >Explore Service <i class="fas fa-arrow-right"></i
-              ></a>
+      <!-- HERO SECTION -->
+      <section id="home" class="relative pt-16 pb-24 lg:pt-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <!-- Decorative Shapes -->
+          <div
+            class="hidden lg:block shape-pink animate-on-scroll"
+            style="--delay: 0.1s"
+          ></div>
+          <div
+            class="hidden lg:block shape-green-triangle animate-on-scroll"
+            style="--delay: 0.2s"
+          ></div>
+          <div
+            class="hidden lg:block shape-bottom-right animate-on-scroll"
+            style="--delay: 0.8s"
+          ></div>
+
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Text Content -->
+            <div class="animate-on-scroll slide-in-left" style="--delay: 0.1s">
+              <h1
+                class="text-5xl lg:text-6xl font-extrabold text-dark-text leading-tight"
+              >
+                Smart-Thinking & Innovative Solution.
+              </h1>
+              <p class="mt-6 text-lg text-gray-600 max-w-lg">
+                Class aptent taciti sociosqu ad litora torquent conubia nostra
+                ma inceptos himenaeos. Donec tristique nibh ipsum dignissim.
+              </p>
+              <div
+                class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+              >
+                <a
+                  href="#features"
+                  class="bg-primary text-white px-8 py-3 rounded-xl font-bold text-lg shadow-xl hover:bg-primary-dark transition"
+                >
+                  Discover More
+                </a>
+                <a
+                  href="#features"
+                  class="text-gray-700 px-8 py-3 rounded-xl font-bold text-lg flex items-center hover:text-primary transition"
+                >
+                  Explore Service
+                  <span class="ml-2 text-xl">&rarr;</span>
+                </a>
+              </div>
+              <div
+                class="mt-8 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-sm font-medium text-gray-600"
+              >
+                <span class="flex items-center">
+                  <span class="text-success mr-2">&#10003;</span> Get 15 days
+                  free trial
+                </span>
+                <span class="flex items-center">
+                  <span class="text-success mr-2">&#10003;</span> No credit card
+                  is required
+                </span>
+                <span class="flex items-center">
+                  <span class="text-success mr-2">&#10003;</span> Cancel anytime
+                </span>
+              </div>
             </div>
-            <ul class="hero-benefits">
-              <li>
-                <i class="fas fa-check-circle check-icon"></i> Get 15 days free
-                trial
-              </li>
-              <li>
-                <i class="fas fa-check-circle check-icon"></i> No credit card is
-                required
-              </li>
-              <li>
-                <i class="fas fa-check-circle check-icon"></i> Cancel anytime
-              </li>
-            </ul>
-          </div>
-          <!-- Visual/Dashboard Illustration -->
-          <div class="hero-visual">
-            <!-- Placeholder for the sophisticated AI/Dashboard graphics -->
+
+            <!-- Visual Mockups -->
             <div
-              class="visual-card user-active-card fade-in-up"
+              class="relative h-[450px] lg:h-[600px] flex items-center justify-center animate-on-scroll scale-up"
+              style="--delay: 0.3s"
+            >
+              <!-- Card 1: User Active Possibility -->
+              <div
+                class="absolute bg-white p-4 rounded-xl shadow-2xl w-52 transform -translate-x-1/2 top-10 left-[40%] md:left-[55%]"
+              >
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-semibold text-gray-700"
+                    >User Active Possibility</span
+                  >
+                  <span class="text-primary">&bull;</span>
+                </div>
+                <div class="text-2xl font-bold text-primary">$44.3578</div>
+                <div
+                  class="w-full h-10 mt-3 bg-gray-100 rounded-lg overflow-hidden relative"
+                >
+                  <!-- Mock Line Graph -->
+                  <svg
+                    class="absolute inset-0 w-full h-full"
+                    viewBox="0 0 100 40"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0 30 C 25 15, 50 35, 75 10, 100 25"
+                      fill="none"
+                      stroke="#5541f5"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Card 2: Daily Bar Chart -->
+              <div
+                class="absolute bg-white p-4 rounded-xl shadow-2xl w-44 top-0 right-0 transform translate-x-10"
+              >
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm font-semibold text-gray-700">$4.8K</span>
+                  <span class="text-xs text-gray-400">/ Daily</span>
+                </div>
+                <div class="mock-graph-bar-chart h-28">
+                  <div class="mock-bar" style="height: 60%"></div>
+                  <div class="mock-bar" style="height: 90%"></div>
+                  <div class="mock-bar" style="height: 45%"></div>
+                  <div class="mock-bar" style="height: 70%"></div>
+                  <div class="mock-bar" style="height: 55%"></div>
+                  <div class="mock-bar" style="height: 80%"></div>
+                  <div class="mock-bar" style="height: 30%"></div>
+                </div>
+              </div>
+
+              <!-- Card 3: Data Analysis Line Chart -->
+              <div
+                class="absolute bg-white p-5 rounded-xl shadow-2xl w-72 bottom-0 right-1/4 transform translate-x-1/4"
+              >
+                <h3 class="font-bold text-gray-700 mb-2">Data Analysis</h3>
+                <div class="text-xs text-gray-500 mb-3">Viverra tristique</div>
+                <div class="flex text-xs space-x-3 mb-2">
+                  <span class="text-red-500 font-semibold">&bull; Aliquam</span>
+                  <span class="text-green-500 font-semibold">&bull; Morte</span>
+                  <span class="text-indigo-500 font-semibold"
+                    >&bull; Molestie</span
+                  >
+                </div>
+                <div
+                  class="mock-graph-line-chart rounded-lg border border-gray-100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIENT LOGOS SECTION -->
+      <section class="bg-[#fafafa] py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            class="flex flex-wrap justify-around items-center gap-8 md:gap-16 opacity-70 animate-on-scroll slide-in-left"
+            style="--delay: 0.1s"
+          >
+            <!-- Mock Logos (using text for pixel-perfect mimicry of the grayed-out look) -->
+            <span class="text-xl font-bold text-gray-500 flex items-center"
+              ><span class="text-3xl mr-2">V</span> VIO EMPOWER</span
+            >
+            <span class="text-xl font-bold text-gray-500 flex items-center"
+              ><span class="text-3xl mr-2">B</span> B-TECHNET</span
+            >
+            <span class="text-xl font-bold text-gray-500 flex items-center"
+              ><span class="text-3xl mr-2">T</span> THIRD VISION</span
+            >
+            <span class="text-xl font-bold text-gray-500 flex items-center"
+              ><span class="text-3xl mr-2">Z</span> ZENETICS</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURE SECTION -->
+      <section id="features" class="bg-white pt-20 pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-extrabold text-center text-dark-text animate-on-scroll"
+            style="--delay: 0s"
+          >
+            The Better Way to Grow Your Business
+          </h2>
+          <p
+            class="text-center text-lg text-gray-500 mt-4 mb-16 animate-on-scroll"
+            style="--delay: 0.1s"
+          >
+            Accelerate your business with innovative, data-driven solutions.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Feature Card 1 -->
+            <article
+              class="bg-light-bg p-8 rounded-xl shadow-lg border-t-4 border-primary hover:shadow-2xl transition animate-on-scroll"
               style="--delay: 0.2s"
             >
-              <i class="fas fa-user-tie"></i>
-              <p>User Active Possibility</p>
-              <h3>$44.3578</h3>
-              <div class="tiny-graph"></div>
-            </div>
-            <div
-              class="visual-card daily-data-card fade-in-up"
+              <div
+                class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19V6l2-2 2 2v13"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 13V6l-2-2-2 2v7"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-dark-text mb-3">
+                Convert Your Traffic
+              </h3>
+              <p class="text-gray-600">
+                Sed magna justo, interdum vitae congue ac, euismod eu quam.
+                Pellentesque eget sem euismod.
+              </p>
+            </article>
+
+            <!-- Feature Card 2 -->
+            <article
+              class="bg-light-bg p-8 rounded-xl shadow-lg border-t-4 border-primary hover:shadow-2xl transition animate-on-scroll"
               style="--delay: 0.4s"
             >
-              <h3>$4.8K <small>/Daily</small></h3>
-              <div class="bar-chart"></div>
-            </div>
-            <div
-              class="visual-card data-analysis-card fade-in-up"
+              <div
+                class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-dark-text mb-3">
+                Drive Better Actions
+              </h3>
+              <p class="text-gray-600">
+                Phasellus blandit enim ac est vehicula, vel semper purus
+                ultrices. Ut egestas arcu in diam.
+              </p>
+            </article>
+
+            <!-- Feature Card 3 -->
+            <article
+              class="bg-light-bg p-8 rounded-xl shadow-lg border-t-4 border-primary hover:shadow-2xl transition animate-on-scroll"
               style="--delay: 0.6s"
             >
-              <h4>Data Analysis</h4>
-              <p class="analysis-sub">Viverra tristique</p>
-              <div class="line-graph"></div>
+              <div
+                class="bg-white p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4 shadow-md"
+              >
+                <svg
+                  class="w-8 h-8 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 12H4m16 0l-4-4m4 4l-4 4"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-dark-text mb-3">
+                Improve Your Funnel
+              </h3>
+              <p class="text-gray-600">
+                Nulla facilisi. Integer eu lectus finibus, hendrerit ipsum nec,
+                accumsan nunc. Donec vel.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- DASHBOARD PREVIEW SECTION -->
+      <section id="dashboard" class="bg-primary py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+          <header
+            class="text-center mb-16 animate-on-scroll"
+            style="--delay: 0s"
+          >
+            <h2 class="text-4xl font-extrabold">
+              Powerful Analytics & Real-Time Performance
+            </h2>
+            <p class="text-lg mt-4 text-indigo-200">
+              Maximize your marketing potential and see instant, actionable
+              results.
+            </p>
+          </header>
+
+          <!-- Stats Bar -->
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 text-center animate-on-scroll scale-up"
+            style="--delay: 0.3s"
+          >
+            <div class="border-r border-indigo-400 last:border-r-0 py-2">
+              <p class="text-4xl font-extrabold">16K+</p>
+              <p class="text-indigo-200 text-sm">Active Users</p>
+            </div>
+            <div class="border-r border-indigo-400 last:border-r-0 py-2">
+              <p class="text-4xl font-extrabold">35M+</p>
+              <p class="text-indigo-200 text-sm">Total Sessions</p>
+            </div>
+            <div class="border-r border-indigo-400 last:border-r-0 py-2">
+              <p class="text-4xl font-extrabold">6.8M</p>
+              <p class="text-indigo-200 text-sm">Conversions</p>
+            </div>
+            <div class="py-2">
+              <p class="text-4xl font-extrabold">99%</p>
+              <p class="text-indigo-200 text-sm">Uptime Reliability</p>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- 3. Client Logos Section -->
-      <section class="logo-section">
-        <div class="container client-list">
-          <div class="client-item">
-            <i class="fas fa-chart-line"></i> VIO EMPOWER
-          </div>
-          <div class="client-item">
-            <i class="fas fa-code-branch"></i> B-TECHNET
-          </div>
-          <div class="client-item">
-            <i class="fas fa-project-diagram"></i> THIRD VISION
-          </div>
-          <div class="client-item"><i class="fas fa-atom"></i> Zenetics</div>
-        </div>
-      </section>
-
-      <!-- 4. Feature Cards Section -->
-      <section id="features" class="feature-section">
-        <div class="container">
-          <h2 class="section-title">Perfect Solution For Your Business</h2>
-          <p class="section-subtitle">
-            Morbi nisl nulla a ipsum sollicitudin mauris justo nibh egestas
-            tellus. Curabitur vel leo pulvinar ut justo eget.
-          </p>
-          <div class="feature-grid">
-            <article class="feature-card slide-in-bottom" style="--delay: 0s">
-              <div class="feature-icon bg-pink">
-                <i class="fas fa-users" style="color: #d83151"></i>
-              </div>
-              <h3>Create Your Fan Base</h3>
-              <p>
-                Viverra tristique platea turpis consectetur. Nullam vitae nisl
-                at eros.
-              </p>
-            </article>
-            <article class="feature-card slide-in-bottom" style="--delay: 0.2s">
-              <div class="feature-icon bg-green">
-                <i class="fas fa-server" style="color: #48bb78"></i>
-              </div>
-              <h3>Utilize Server Status</h3>
-              <p>
-                Viverra tristique platea turpis consectetur. Nullam vitae nisl
-                at eros.
-              </p>
-            </article>
-            <article class="feature-card slide-in-bottom" style="--delay: 0.4s">
-              <div class="feature-icon bg-blue">
-                <i class="fas fa-hands-helping" style="color: #5c67e8"></i>
-              </div>
-              <h3>Handle Every By Peace</h3>
-              <p>
-                Viverra tristique platea turpis consectetur. Nullam vitae nisl
-                at eros.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. Main Dashboard/Analytics Section -->
-      <section id="dashboard" class="analytics-section">
-        <div class="container">
-          <h2 class="section-title">Join An Attractive & Personalized</h2>
-          <p class="section-subtitle">
-            Class aptent taciti sociosqu ad litora torquent conubia nostra ma
-            inceptos himenaeos. Donec tristique nibh ipsum dignissim.
-          </p>
-          <!-- Placeholder for the large, full-width dashboard image -->
-          <div class="dashboard-preview scale-in" style="--delay: 0.6s">
+          <!-- Mockup Image -->
+          <div
+            class="bg-white p-2 rounded-2xl shadow-3xl animate-on-scroll"
+            style="--delay: 0.6s"
+          >
+            <!-- Placeholder image to mimic the dashboard screenshot -->
             <img
-              src="https://placehold.co/1200x550/f0f4ff/5c67e8?text=Comprehensive+Dashboard+UI+Preview"
-              alt="QuickSpace AI Dashboard"
-              class="dashboard-img"
+              src="https://placehold.co/1200x550/e0e7ff/1f2937?text=QuickSpace+Dashboard+Mockup"
+              alt="Dashboard Mockup"
+              class="w-full h-auto rounded-xl shadow-xl border border-gray-100"
             />
           </div>
-          <div class="dashboard-stats">
-            <article><span>16%</span> Projects Completed</article>
-            <article><span>85K</span> New Followers</article>
-            <article><span>65M</span> Total Downloads</article>
-            <article><span>90%</span> Task Finished</article>
-          </div>
         </div>
       </section>
 
-      <!-- 6. Testimonial Section -->
-      <section class="testimonial-section">
-        <div class="container testimonial-grid">
-          <div class="testimonial-header slide-in-left" style="--delay: 0.8s">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <h2>What Our Customer are Saying</h2>
-            <div class="testimonial-nav">
-              <button class="nav-arrow">
-                <i class="fas fa-arrow-left"></i>
-              </button>
-              <button class="nav-arrow active">
-                <i class="fas fa-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-
-          <article class="testimonial-card slide-in-right" style="--delay: 1s">
-            <p class="testimonial-text">
-              "This is a powerful and reliable SaaS platform. QuickSpace AI has
-              significantly improved our data processing speed and accuracy."
-            </p>
-            <div class="author-info">
-              <img
-                src="https://placehold.co/50x50/5c67e8/ffffff?text=AB"
-                alt="Avatar"
-                class="avatar"
-              />
-              <div>
-                <p class="author-name">Angela Bowman</p>
-                <p class="author-title">Senior Data Analyst</p>
-              </div>
-            </div>
-          </article>
-
-          <article
-            class="testimonial-card slide-in-right"
-            style="--delay: 1.2s"
+      <!-- TESTIMONIALS SECTION -->
+      <section id="testimonials" class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-extrabold text-center text-dark-text mb-4 animate-on-scroll"
+            style="--delay: 0s"
           >
-            <p class="testimonial-text">
-              "The interface is intuitive, and the predictive features are
-              groundbreaking. Highly recommend QuickSpace for any business
-              needing smart solutions."
-            </p>
-            <div class="author-info">
-              <img
-                src="https://placehold.co/50x50/48bb78/ffffff?text=JD"
-                alt="Avatar"
-                class="avatar"
-              />
-              <div>
-                <p class="author-name">John Doe</p>
-                <p class="author-title">CEO, Tech Innovations</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- 7. Pricing Section -->
-      <section id="pricing" class="pricing-section">
-        <div class="container">
-          <h2 class="section-title">Expand your options with a subscription</h2>
-          <p class="section-subtitle">
-            Try different subscription plans tailored to your business size and
-            needs.
+            What People Say
+          </h2>
+          <p
+            class="text-center text-lg text-gray-500 mb-16 animate-on-scroll"
+            style="--delay: 0.1s"
+          >
+            Hear from our satisfied customers worldwide.
           </p>
 
-          <div class="pricing-toggle">
-            <span>Monthly</span>
-            <label class="switch">
-              <input type="checkbox" id="pricing-switch" />
-              <span class="slider round"></span>
-            </label>
-            <span>Yearly (Save 20%)</span>
-          </div>
-
-          <div class="pricing-grid">
-            <!-- Plan 1: Basic -->
-            <article class="price-card slide-in-bottom" style="--delay: 0s">
-              <h3>Basic</h3>
-              <p class="plan-tag">For the smallest teams</p>
-              <p class="price" data-monthly="$0" data-yearly="$0">
-                <span class="price-currency">$</span>0
-              </p>
-              <p class="price-cycle">per user / month</p>
-              <ul class="features-list">
-                <li><i class="fas fa-check"></i> 5 Project templates</li>
-                <li><i class="fas fa-check"></i> 10 GB Cloud Storage</li>
-                <li><i class="fas fa-check"></i> Basic Support</li>
-                <li class="disabled">
-                  <i class="fas fa-times"></i> Custom Labels
-                </li>
-              </ul>
-              <a href="#" class="btn-secondary">Try It Free</a>
-            </article>
-
-            <!-- Plan 2: Standard (Recommended) -->
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
             <article
-              class="price-card recommended slide-in-bottom"
+              class="p-6 bg-light-bg rounded-xl shadow-lg border-b-4 border-primary animate-on-scroll"
               style="--delay: 0.2s"
             >
-              <h3>Standard</h3>
-              <p class="plan-tag">For growing businesses</p>
-              <p class="price" data-monthly="$300" data-yearly="$240">
-                <span class="price-currency">$</span>300
+              <span class="quote-icon text-primary">“</span>
+              <p class="text-gray-700 italic mb-4">
+                "QuickSpace transformed our understanding of customer behavior.
+                The real-time reporting is a game-changer for our marketing
+                team."
               </p>
-              <p class="price-cycle">per user / month</p>
-              <ul class="features-list">
-                <li><i class="fas fa-check"></i> 15 Project templates</li>
-                <li><i class="fas fa-check"></i> Unlimited Cloud Storage</li>
-                <li><i class="fas fa-check"></i> 24/7 Priority Support</li>
-                <li><i class="fas fa-check"></i> Custom Labels</li>
-              </ul>
-              <a href="#" class="btn-primary">Select Plan Free</a>
+              <div class="flex items-center">
+                <img
+                  src="https://placehold.co/50x50/e0e7ff/4338ca?text=JD"
+                  alt="Avatar"
+                  class="w-12 h-12 rounded-full mr-3 border-2 border-primary"
+                />
+                <div>
+                  <p class="font-bold text-dark-text">Jessica Davis</p>
+                  <p class="text-sm text-gray-500">
+                    Marketing Director, Acme Corp
+                  </p>
+                </div>
+              </div>
             </article>
 
-            <!-- Plan 3: Unlimited -->
-            <article class="price-card slide-in-bottom" style="--delay: 0.4s">
-              <h3>Unlimited</h3>
-              <p class="plan-tag">For enterprise solutions</p>
-              <p class="price" data-monthly="$600" data-yearly="$480">
-                <span class="price-currency">$</span>600
+            <!-- Testimonial 2 -->
+            <article
+              class="p-6 bg-light-bg rounded-xl shadow-lg border-b-4 border-success animate-on-scroll"
+              style="--delay: 0.4s"
+            >
+              <span class="quote-icon text-success">“</span>
+              <p class="text-gray-700 italic mb-4">
+                "The setup was seamless, and the depth of data provided
+                immediately led to a 20% increase in our conversion rate."
               </p>
-              <p class="price-cycle">per user / month</p>
-              <ul class="features-list">
-                <li><i class="fas fa-check"></i> All Standard features</li>
-                <li><i class="fas fa-check"></i> Custom API Access</li>
-                <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
-                <li><i class="fas fa-check"></i> Unlimited Integrations</li>
-              </ul>
-              <a href="#" class="btn-secondary">Book A Free Demo</a>
+              <div class="flex items-center">
+                <img
+                  src="https://placehold.co/50x50/ccfbf1/059669?text=SM"
+                  alt="Avatar"
+                  class="w-12 h-12 rounded-full mr-3 border-2 border-success"
+                />
+                <div>
+                  <p class="font-bold text-dark-text">Samuel Miller</p>
+                  <p class="text-sm text-gray-500">CEO, Tech Innovations</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Testimonial 3 -->
+            <article
+              class="p-6 bg-light-bg rounded-xl shadow-lg border-b-4 border-indigo-400 animate-on-scroll"
+              style="--delay: 0.6s"
+            >
+              <span class="quote-icon text-indigo-400">“</span>
+              <p class="text-gray-700 italic mb-4">
+                "Excellent support and an intuitive interface. It's the most
+                powerful yet easy-to-use analytics platform we've ever tried."
+              </p>
+              <div class="flex items-center">
+                <img
+                  src="https://placehold.co/50x50/f9fafb/374151?text=AR"
+                  alt="Avatar"
+                  class="w-12 h-12 rounded-full mr-3 border-2 border-indigo-400"
+                />
+                <div>
+                  <p class="font-bold text-dark-text">Anna Rodriguez</p>
+                  <p class="text-sm text-gray-500">
+                    Product Manager, Global Solutions
+                  </p>
+                </div>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- 8. Newsletter CTA -->
-      <section id="contact" class="newsletter-cta">
-        <div class="container cta-content">
-          <div class="cta-text">
-            <h3>Sign up to our newsletter</h3>
-            <p>
-              Enter your email below to receive our latest updates and offers.
-            </p>
+      <!-- PRICING SECTION -->
+      <section id="pricing" class="bg-light-bg py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            class="text-4xl font-extrabold text-center text-dark-text mb-4 animate-on-scroll"
+            style="--delay: 0s"
+          >
+            Pricing Plans
+          </h2>
+          <p
+            class="text-center text-lg text-gray-500 mt-4 mb-12 animate-on-scroll"
+            style="--delay: 0.1s"
+          >
+            Expand your options with a subscription.
+          </p>
+
+          <!-- Toggle Switch -->
+          <div
+            class="flex justify-center items-center space-x-4 mb-16 font-semibold animate-on-scroll"
+            style="--delay: 0.3s"
+          >
+            <span id="monthly-label" class="text-dark-text">Monthly</span>
+            <div id="pricing-toggle" class="toggle-switch"></div>
+            <span id="yearly-label" class="text-gray-500"
+              >Yearly <span class="text-success text-sm">(Save 20%)</span></span
+            >
           </div>
-          <form class="cta-form">
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit" class="btn-primary">
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          </form>
+
+          <!-- Pricing Cards -->
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Basic Plan -->
+            <article
+              class="bg-white p-8 rounded-xl shadow-xl text-center border-t-8 border-gray-100 animate-on-scroll"
+              style="--delay: 0.4s"
+            >
+              <h3 class="text-2xl font-bold text-dark-text mb-3">Basic</h3>
+              <p class="text-gray-500">The perfect start for new users.</p>
+              <div class="my-6">
+                <span
+                  class="text-5xl font-extrabold text-dark-text leading-none"
+                  data-monthly="0"
+                  data-yearly="0"
+                >
+                  <span class="text-3xl align-top font-bold text-gray-500"
+                    >$</span
+                  >0
+                </span>
+                <p class="text-gray-500 mt-1" id="price-cycle-basic">
+                  per month
+                </p>
+              </div>
+
+              <ul class="text-left space-y-3 mb-8 text-gray-700 text-sm">
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> All core
+                  features
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> 10 GB cloud
+                  storage
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> Basic
+                  reporting
+                </li>
+                <li class="flex items-center">
+                  <span class="text-gray-400 mr-3">&#10005;</span> Advanced AI
+                  tools
+                </li>
+                <li class="flex items-center">
+                  <span class="text-gray-400 mr-3">&#10005;</span> 24/7 Priority
+                  support
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="block bg-gray-100 text-dark-text px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition"
+              >
+                Start Free Trial
+              </a>
+            </article>
+
+            <!-- Standard Plan (Recommended) -->
+            <article
+              class="bg-white p-8 rounded-xl shadow-2xl text-center border-t-8 border-primary transform scale-[1.03] animate-on-scroll"
+              style="--delay: 0.6s"
+            >
+              <h3 class="text-2xl font-bold text-dark-text mb-3">Standard</h3>
+              <p class="text-gray-500">The best value for growing teams.</p>
+              <div class="my-6">
+                <span
+                  class="text-5xl font-extrabold text-dark-text leading-none"
+                  data-monthly="300"
+                  data-yearly="2880"
+                >
+                  <span class="text-3xl align-top font-bold text-gray-500"
+                    >$</span
+                  >300
+                </span>
+                <p class="text-gray-500 mt-1" id="price-cycle-standard">
+                  per month
+                </p>
+              </div>
+
+              <ul class="text-left space-y-3 mb-8 text-gray-700 text-sm">
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> All features
+                  in Basic
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> Unlimited
+                  storage
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> Advanced
+                  reporting
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> 5 AI tools
+                  unlocked
+                </li>
+                <li class="flex items-center">
+                  <span class="text-gray-400 mr-3">&#10005;</span> 24/7 Priority
+                  support
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="block bg-primary text-white px-8 py-3 rounded-lg font-bold hover:bg-primary-dark transition shadow-xl"
+              >
+                Try Standard Free
+              </a>
+            </article>
+
+            <!-- Unlimited Plan -->
+            <article
+              class="bg-white p-8 rounded-xl shadow-xl text-center border-t-8 border-gray-100 animate-on-scroll"
+              style="--delay: 0.8s"
+            >
+              <h3 class="text-2xl font-bold text-dark-text mb-3">Unlimited</h3>
+              <p class="text-gray-500">Power for large enterprises.</p>
+              <div class="my-6">
+                <span
+                  class="text-5xl font-extrabold text-dark-text leading-none"
+                  data-monthly="600"
+                  data-yearly="5760"
+                >
+                  <span class="text-3xl align-top font-bold text-gray-500"
+                    >$</span
+                  >600
+                </span>
+                <p class="text-gray-500 mt-1" id="price-cycle-unlimited">
+                  per month
+                </p>
+              </div>
+
+              <ul class="text-left space-y-3 mb-8 text-gray-700 text-sm">
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> All Standard
+                  features
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> Dedicated
+                  cloud server
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> Custom API
+                  access
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> All AI tools
+                  unlocked
+                </li>
+                <li class="flex items-center">
+                  <span class="text-success mr-3">&#10003;</span> 24/7 Priority
+                  support
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="block bg-gray-100 text-dark-text px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition"
+              >
+                Consult for Price
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- NEWSLETTER CTA -->
+      <section class="py-24">
+        <div
+          class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll slide-in-left"
+          style="--delay: 0s"
+        >
+          <div
+            class="bg-light-bg p-8 md:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0"
+          >
+            <div class="text-center md:text-left">
+              <h3 class="text-3xl font-extrabold text-dark-text mb-2">
+                Sign up to our newsletter
+              </h3>
+              <p class="text-gray-600">
+                Receive the latest business tips and strategies.
+              </p>
+            </div>
+            <form id="newsletter-form" class="flex w-full max-w-sm">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                required
+                class="flex-grow p-3 rounded-l-lg border-2 border-gray-300 focus:outline-none focus:border-primary"
+              />
+              <button
+                type="submit"
+                class="bg-primary text-white p-3 rounded-r-lg font-bold hover:bg-primary-dark transition"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- 9. Footer -->
-    <footer class="main-footer">
-      <div class="container footer-grid">
-        <div class="footer-col footer-about">
-          <a href="#" class="logo footer-logo">
-            <i class="fas fa-ellipsis-h logo-dots"></i> QuickSpace
-          </a>
-          <p>
-            We build beautiful, functional web solutions with a focus on speed
-            and results.
-          </p>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- FOOTER -->
+    <footer class="bg-[#182333] text-gray-300 pt-16 pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          class="grid grid-cols-2 md:grid-cols-5 gap-10 border-b border-gray-700 pb-12"
+        >
+          <!-- Col 1: Logo & Description -->
+          <div class="col-span-2 md:col-span-1">
+            <a href="#" class="text-3xl font-extrabold flex items-center mb-4">
+              <span class="text-primary">•••</span
+              ><span class="text-white">Velora AI</span>
+            </a>
+            <p class="text-sm text-gray-400">
+              Smart-Thinking & Innovative Solution for your business growth.
+            </p>
+          </div>
+
+          <!-- Col 2: Company -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
+            <ul class="space-y-3 text-sm">
+              <li>
+                <a href="#" class="hover:text-primary transition">Home</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Press</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Media Kit</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 3: Resources -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-4">Resources</h4>
+            <ul class="space-y-3 text-sm">
+              <li>
+                <a href="#" class="hover:text-primary transition">Pricing</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Support Center</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition">Status</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 4: Products -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-4">Products</h4>
+            <ul class="space-y-3 text-sm">
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Analytics Suite</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >AI Optimizer</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Marketing Engine</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-primary transition"
+                  >Data Warehouse</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Col 5: Contact -->
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-4">Our Address</h4>
+            <p class="text-sm text-gray-400 mb-4">
+              123 Main Street, Suite 500,<br />
+              San Francisco, CA 94107
+            </p>
+            <div class="flex space-x-4 text-gray-400">
+              <a href="#" class="hover:text-primary transition"
+                ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.013 4.85.071 1.17.065 1.745.249 2.197.436.463.197.746.408 1.05.712.304.304.515.587.712 1.05.187.452.371 1.027.436 2.197.058 1.266.071 1.646.071 4.85s-.013 3.584-.071 4.85c-.065 1.17-.249 1.745-.436 2.197-.197.463-.408.746-.712 1.05-.304.304-.587.515-1.05.712-.452.187-1.027.371-2.197.436-1.266.058-1.646.071-4.85.071s-3.584-.013-4.85-.071c-1.17-.065-1.745-.249-2.197-.436-.463-.197-.746-.408-1.05-.712-.304-.304-.515-.587-.712-1.05-.187-.452-.371-1.027-.436-2.197-.058-1.266-.071-1.646-.071-4.85s.013-3.584.071-4.85c.065-1.17.249-1.745.436-2.197.197-.463.408-.746.712-1.05.304-.304.587-.515 1.05-.712.452-.187 1.027-.371 2.197-.436C8.416 2.176 8.796 2.163 12 2.163zm0 1.625c-3.155 0-3.51.012-4.757.069-1.107.062-1.62.24-1.99.382-.4.148-.68.322-.973.615-.293.293-.467.573-.615.973-.142.37-.32 8.883-.382 1.99-.057 1.247-.069 1.602-.069 4.757s.012 3.51.069 4.757c.062 1.107.24 1.62.382 1.99.148.4.322.68.615.973.293.293.573.467.973.615.37.142.883.32 1.99.382 1.247.057 1.602.069 4.757.069s3.51-.012 4.757-.069c1.107-.062 1.62-.24 1.99-.382.4-.148.68-.322.973-.615.293-.293.467-.573.615-.973.142-.37.32-.883.382-1.99.057-1.247.069-1.602.069-4.757s-.012-3.51-.069-4.757c-.062-1.107-.24-1.62-.382-1.99-.148-.4-.322-.68-.615-.973-.293-.293-.573-.467-.973-.615-.37-.142-.883-.32-1.99-.382-1.247-.057-1.602-.069-4.757-.069zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 1.625A3.375 3.375 0 1 1 12 15.375 3.375 3.375 0 0 1 12 8.625z"
+                  /></svg
+              ></a>
+              <a href="#" class="hover:text-primary transition"
+                ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22.254 5.922c-.63.279-1.309.467-2.02.55.724-.434 1.282-1.121 1.545-1.942-.676.398-1.423.688-2.215.845-.638-.68-1.544-1.104-2.551-1.104-1.93 0-3.5.733-3.5 2.109 0 .165.018.328.053.486-2.903-.146-5.474-1.636-7.221-3.882-.3.518-.468 1.12-.468 1.758 0 1.125.576 2.112 1.45 2.7-.534-.017-1.037-.168-1.478-.408-.002.013-.002.026-.002.039 0 1.638 1.168 2.997 2.71 3.308-.284.077-.582.116-.893.116-.218 0-.43-.019-.638-.061.433 1.352 1.688 2.333 3.174 2.361-1.157.907-2.617 1.448-4.254 1.448-.276 0-.549-.016-.816-.048 1.5 1.01 3.284 1.602 5.176 1.602 6.21 0 9.613-4.885 9.613-9.143 0-.14-.003-.279-.009-.418.665-.48 1.243-1.08 1.7-1.764z"
+                  /></svg
+              ></a>
+              <a href="#" class="hover:text-primary transition"
+                ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-1.8 17.6h-3.4v-9.6h3.4v9.6zm-1.7-10.7a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8zm11.3 10.7h-3.4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7v5.3h-3.4v-9.6h3.2v1.5h.05c.48-.9 1.65-1.8 3.32-1.8 3.55 0 4.2 2.3 4.2 5.2v6.2z"
+                  /></svg
+              ></a>
+              <a href="#" class="hover:text-primary transition"
+                ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.309 16.993a.925.925 0 0 1-.944-.648c-.015-.09-.323-2.008-.415-2.603-.092-.596-.328-1.572-.751-2.03-.423-.457-1.02-.686-1.875-.686-.855 0-1.452.229-1.875.686-.423.457-.659 1.434-.751 2.03-.092.595-.4 2.513-.415 2.603a.925.925 0 0 1-.944.648c-1.18-.117-2.316-.36-3.376-.713a.944.944 0 0 1-.606-.799c-.066-.34-.112-2.197-.134-2.871-.023-.674-.015-1.637.528-2.693.542-1.055 1.638-1.75 2.708-2.224.168-.07.34-.127.514-.176.326-.09.68-.135 1.05-.135 1.056 0 1.954.26 2.628.78.674.52 1.037 1.325 1.037 2.415 0 .542-.15 1.02-.45 1.425-.3.405-.805.586-1.515.586-.18 0-.36-.015-.54-.045.57.57 1.395 1.05 2.505 1.44.75.26 1.545.45 2.34.57a.925.925 0 0 1 .644.896c-.033.435-.116 2.073-.174 2.569-.058.496-.134.87-.27 1.08-.242.368-.616.635-1.07.78-.184.058-.372.095-.56.115z"
+                  /></svg
+              ></a>
+            </div>
           </div>
         </div>
 
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Team</a></li>
-          </ul>
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 border-t border-gray-700 pt-6 flex justify-between items-center flex-wrap"
+        >
+          <p class="text-sm text-gray-500">
+            &copy; 2025 QuickSpace. All rights reserved.
+          </p>
+          <div class="text-sm text-gray-500 space-x-4">
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition"
+              >Terms & Conditions</a
+            >
+          </div>
         </div>
-
-        <div class="footer-col">
-          <h4>Pages</h4>
-          <ul>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Our Address</h4>
-          <p>123 Main St, Suite 400<br />New York, NY 10001<br />USA</p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>
-          &copy; 2024 QuickSpace, Inc. All rights reserved. |
-          <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-        </p>
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JAVASCRIPT BLOCK -->
+    <script src="/script.js"></script>
   </body>
 </html>
